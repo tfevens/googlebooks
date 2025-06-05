@@ -84,6 +84,7 @@ class Book
                 return $identifier['identifier'];
             }
         }
+
         return null;
     }
 
@@ -97,6 +98,7 @@ class Book
                 return $identifier['identifier'];
             }
         }
+
         return null;
     }
 

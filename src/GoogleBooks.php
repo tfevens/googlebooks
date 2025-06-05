@@ -2,9 +2,9 @@
 
 namespace Tfevens\GoogleBooks;
 
-use Tfevens\GoogleBooks\Services\GoogleBooksService;
 use Tfevens\GoogleBooks\DTOs\Book;
 use Tfevens\GoogleBooks\DTOs\BookCollection;
+use Tfevens\GoogleBooks\Services\GoogleBooksService;
 
 class GoogleBooks
 {
@@ -12,9 +12,10 @@ class GoogleBooks
 
     public static function getService(): GoogleBooksService
     {
-        if (!isset(self::$service)) {
-            self::$service = new GoogleBooksService();
+        if (! isset(self::$service)) {
+            self::$service = new GoogleBooksService;
         }
+
         return self::$service;
     }
 

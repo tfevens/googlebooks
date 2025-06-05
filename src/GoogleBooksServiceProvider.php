@@ -3,7 +3,6 @@
 namespace Tfevens\GoogleBooks;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Http\Client\Factory as HttpFactory;
 use tfevens\GoogleBooks\Services\GoogleBooksService;
 
 class GoogleBooksServiceProvider extends ServiceProvider

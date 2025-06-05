@@ -5,9 +5,10 @@ namespace Tfevens\GoogleBooks\DTOs;
 use Countable;
 use Iterator;
 
-class BookCollection implements Iterator, Countable
+class BookCollection implements Countable, Iterator
 {
     protected array $books;
+
     protected int $position = 0;
 
     public function __construct(
@@ -16,7 +17,7 @@ class BookCollection implements Iterator, Countable
         public readonly int $startIndex,
         public readonly int $itemsPerPage
     ) {
-        $this->books = array_map(fn($book) => $book instanceof Book ? $book : Book::fromApiResponse($book), $books);
+        $this->books = array_map(fn ($book) => $book instanceof Book ? $book : Book::fromApiResponse($book), $books);
     }
 
     public static function fromApiResponse(array $data): self
@@ -50,7 +51,7 @@ class BookCollection implements Iterator, Countable
     public function toArray(): array
     {
         return [
-            'books' => array_map(fn(Book $book) => $book->toArray(), $this->books),
+            'books' => array_map(fn (Book $book) => $book->toArray(), $this->books),
             'totalItems' => $this->totalItems,
             'startIndex' => $this->startIndex,
             'itemsPerPage' => $this->itemsPerPage,
@@ -70,7 +71,7 @@ class BookCollection implements Iterator, Countable
 
     public function next(): void
     {
-        ++$this->position;
+        $this->position++;
     }
 
     public function rewind(): void

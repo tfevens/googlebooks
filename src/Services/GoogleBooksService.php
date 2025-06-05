@@ -10,6 +10,7 @@ use Tfevens\GoogleBooks\Exceptions\GoogleBooksException;
 class GoogleBooksService
 {
     protected ?string $apiKey;
+
     protected string $baseUrl;
 
     public function __construct(?string $apiKey = null, string $baseUrl = 'https://www.googleapis.com/books/v1')
@@ -34,6 +35,7 @@ class GoogleBooksService
         }
 
         $response = $this->makeRequest('/volumes', $params);
+
         return BookCollection::fromApiResponse($response);
     }
 
@@ -101,7 +103,7 @@ class GoogleBooksService
 
             return $response->json();
         } catch (\Exception $e) {
-            throw new GoogleBooksException("API request failed: " . $e->getMessage(), 0, $e);
+            throw new GoogleBooksException('API request failed: '.$e->getMessage(), 0, $e);
         }
     }
 }
